@@ -1,0 +1,53 @@
+{% extends "00-base.html" %} 
+{% block title %} Login {% endblock %} 
+{% block content%}
+    <section class="section-full-h">
+    <div class="container-small-v">  
+        <h1 class="display-medium">Signup</h1>
+        <form class="login-form" method="POST">
+            <div class="group-wrap-8-v">
+                <label class="label-large" >First Name</label>
+                <input
+                    id="fname-reg" 
+                    class="input-primary-light" 
+                    name="fname-reg" 
+                    placeholder="First Name"
+                    type="text"
+                />
+            </div>
+            <div class="group-wrap-8-v">
+                <label class="label-large" >Email</label>
+                <input
+                    id="email-reg" 
+                    class="input-primary-light" 
+                    name="email-reg" 
+                    placeholder="First Name"
+                    type="email"
+                />
+            </div>
+            <div class="group-wrap-8-v">
+                <label class="label-large" for="password1">Password</label>
+                <input
+                    id="password1"
+                    name="password1" 
+                    type="password" 
+                    class="input-primary-light" 
+                    placeholder="Choose a password"
+                />
+            </div>
+            <div class="group-wrap-8-v">
+                <label class="label-large" for="password2">Confirm Password</label>
+                <input
+                    id="password2"
+                    name="password2"
+                    type="password" 
+                    class="input-primary-light"  
+                    placeholder="Confirm password"
+                />
+            </div>
+            <br/>
+            <button type="submit" class="button-primary">Register</button>
+        </form>
+    </div>
+    </section>
+{% endblock %}

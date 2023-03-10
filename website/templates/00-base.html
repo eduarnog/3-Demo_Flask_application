@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html class="html"lang="en-US">
+  <head>
+
+    <!-- specifying your document's character encoding-->
+    <meta charset="utf-8" />
+
+    <!-- author & description-->
+    <meta name="author" content="EduardoNog" />
+    <meta name="description" content="D.emo is a design tool powered by AI and allows you to create on-brand visual design effortlesly." />
+    <meta name="viewport" content="width=device-width, initial-scale = 1"/>
+   
+    <!-- meta preview -->
+    <meta property="og:image" content="https://developer.mozilla.org/static/img/opengraph-logo.png" />
+    <meta property="og:description" content="D.emo is a design tool powered by AI and allows you to create on-brand visual design effortlesly." />
+    <meta property="og:title" content="D.emo Visual Design Tool" />
+
+    <!--favicon-->
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    
+    <!--title-->
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- load font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap" rel="stylesheet">
+
+    
+    <!--CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='buttons.css') }}"/>
+    <link rel="stylesheet" type="text/css" href= "{{ url_for('static', filename='theme-light.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='tokens-colors.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='tokens-typography.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='containers.css') }}" />
+
+
+    <!--JavaScript-->
+    <script src="my-js-file.js" defer></script>
+
+  </head>
+
+  <body class ="body"> 
+
+    <!--navbar-->
+    <nav class="navbar-wrap">
+      <!--logo--> 
+      <div class="logo-wrap">
+        <img src = "Icons/menu_24px.svg" alt="menu" class="menu-button"/>
+        <a  href="/" class="nav-logo-link" alt="D.emo logo">d.emo</a>
+      </div>
+      <!--nav items--> 
+      <div class="nav-items">
+        <!--<a href="#" class="nav-link">Solution</a>
+        <a href="#" class="nav-link">Pricing</a>
+        <a href="#" class="nav-link">Contact</a>--> 
+        <a href="/sign-up" class="nav-link">Register</a>
+        {% if user.is_authenticated %}
+        <div class="avatar-icon"></div>
+        {% else %}
+        <a href="/login" class="button-primary">Login</a>
+        {% endif %}        
+      </div>
+    </nav>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+      {% if category == 'error'%}
+        <div class="pop-up-error" role="alert">
+          {{ message }}
+        <button type="button" class="#danger" data-dismiss="alert">
+          <span aria-hidden="true"> &times; </span>
+        </button>
+      </div>
+      {% else %}
+      <div class="pop-up-succs" role="alert">
+        {{ message }}
+        <button type="button" class="#sucess" data-dismiss="alert">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endif %}
+      {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <main>
+    {% block content %}
+    
+    {% endblock %}   
+    </main>
+    
+
+    <footer class="footer-sign">
+      <label class="label-medium">©2023 d.emo</label>
+      <label class="label-medium">All rights reserved</label>
+      <label class="label-medium">Legal & Imprint</label>
+    </footer>
+    
+  </body>
+</html>

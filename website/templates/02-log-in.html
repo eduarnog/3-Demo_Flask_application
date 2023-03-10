@@ -1,0 +1,42 @@
+{% extends "00-base.html" %} 
+{% block title %} Login {% endblock %} 
+{% block content%}
+      <!--Hero section-->
+      <section class="section-full-h">
+        <!--container 30%--> 
+        <div class="container-small-v">
+
+          <!--h2-->
+          <h1 class="display-medium">Hello there </br> stranger!</h1>
+
+          <!--body-large-->
+          <p class="body-large"> &#128110; Gotta check some id<br>
+          Please add you log-in information.</p>
+
+          <!--login form-->
+          <form class="login-form" method="POST">
+            <label class="label-large" for="email">Email</label>
+            <input 
+              id="email" 
+              class ="input-primary-light",
+              type="email" 
+              name="user-email" 
+              placeholder="Enter email"
+              />
+            <label class="label-large" for="password">Password</label>
+            <input 
+              class ="input-primary-light" 
+              type="password"
+              id="user-password"
+              name="user-password"
+              placeholder="Enter password"
+            />
+            <div class="group-wrap-16-v">
+              <input class= "button-primary", type="submit"  value="Login">
+              <a hefr="#" class="button-text">Forgot password?</a>
+            </div>
+          </form>
+
+        </div>
+      </section>        
+{% endblock %}
