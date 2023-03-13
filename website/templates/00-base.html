@@ -36,7 +36,6 @@
 
 
     <!--JavaScript-->
-    <script src="my-js-file.js" defer></script>
 
   </head>
 
@@ -44,9 +43,8 @@
 
     <!--navbar-->
     <nav class="navbar-wrap">
-      <!--logo--> 
       <div class="logo-wrap">
-        <img src = "Icons/menu_24px.svg" alt="menu" class="menu-button"/>
+        <img src = "{{ img }}" alt="menu"/>
         <a  href="/" class="nav-logo-link" alt="D.emo logo">d.emo</a>
       </div>
       <!--nav items--> 
@@ -62,28 +60,31 @@
         {% endif %}        
       </div>
     </nav>
+
+    <!--pop up--> 
     {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-      {% for category, message in messages %}
-      {% if category == 'error'%}
-        <div class="pop-up-error" role="alert">
-          {{ message }}
-        <button type="button" class="#danger" data-dismiss="alert">
-          <span aria-hidden="true"> &times; </span>
-        </button>
-      </div>
-      {% else %}
-      <div class="pop-up-succs" role="alert">
-        {{ message }}
-        <button type="button" class="#sucess" data-dismiss="alert">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+      {% if messages %}
+        {% for category, message in messages %}
+          {% if category == 'error' %}
+            <div class="pop-up-error" role="alert">
+              {{ message }}
+              <button type="button" class="#danger" data-dismiss="alert">
+                <span aria-hidden="true"> &times; </span>
+              </button>
+            </div>
+          {% else %}
+            <div class="pop-up-succs" role="alert">
+              {{ message }}
+              <button type="button" class="#sucess" data-dismiss="alert">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          {% endif %}
+        {% endfor %}
       {% endif %}
-      {% endfor %}
-    {% endif %}
     {% endwith %}
 
+    <!--content will be added here--> 
     <main>
     {% block content %}
     
